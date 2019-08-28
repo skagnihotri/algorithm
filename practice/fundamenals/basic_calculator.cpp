@@ -19,37 +19,40 @@ int main()
 {
 	char ch;
 	float N1,N2;
-	
-    do{
-        cin>>ch;
+	cout<<"char";
+	cin>>ch;
+    while((int(ch) != 88) || (int(ch) != 120)){
 		if(ch == '+'){
+			cout<<"int";
 			cin>>N1>>N2;
 			cout<<N1+N2<<endl;
 		}
 		else if(ch == '-'){
+			cout<<"int";
 			cin>>N1>>N2;
 			cout<<N1-N2<<endl;
 		}
 		else if(ch == '*'){
+			cout<<"int";
 			cin>>N1>>N2;
 			cout<<N1*N2<<endl;
 		}
 		else if(ch == '/'){
+			cout<<"int";
 			cin>>N1>>N2;
 			cout<<float(N1)/N2<<endl;
 		}
 		else if(ch == '%'){
+			cout<<"int";
 			cin>>N1>>N2;
 			cout<<int(N1)%int(N2)<<endl;
-		}
-		else if(ch == 'X' or ch == 'x'){
-			break;
 		}
         else{
             cout<<"Invalid operation. Try again."<<endl;
         }
-
-	}while(1);
+        cout<<"char";
+        cin>>ch;
+	}
 
 	return 0;
 }
