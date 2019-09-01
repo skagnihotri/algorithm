@@ -13,14 +13,14 @@ int main(){
 		}
 	}
 
-	for(int i=0; i<row; i++){
+	for(int i=0; i<col; i++){
 		if(i%2==0){
-            for(int j=0; j<col; j++){
+            for(int j=0; j<row; j++){
 			    cout<<a[j][i]<<", ";
 		    }
         }
         else{
-            for(int j=col-1; j>=0;j--){
+            for(int j=row-1; j>=0; j--){
                 cout<<a[j][i]<<", ";
             }
         }
