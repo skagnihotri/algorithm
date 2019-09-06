@@ -18,7 +18,7 @@ int main(int argc, char const *argv[])
 		}
 		left_height[i] = max_left;
 	}
-	for(int i=n-1; i>0; i--){
+	for(int i=n-1; i>=0; i--){
 		if(height[i]>max_right){
 			max_right=height[i];
 		}
