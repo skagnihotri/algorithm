@@ -1,21 +1,21 @@
 #include <iostream>
 using namespace std;
 
-void inc(int n){
+void PrintIncreasing(int n){
 	
 	if(n==1){
 		cout<<n<<endl;
 	}
 	else{
-		inc(n-1);
+		PrintIncreasing(n-1);
 		cout<<n<<endl;
 	}
-	
+
 }
 
 int main(int argc, char const *argv[]) {
 	
-	inc(5);
+	PrintIncreasing(5);
 	
 	return 0;
 }
