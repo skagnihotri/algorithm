@@ -3,7 +3,7 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-	int n,fact=1;
+	unsigned long long int n,fact=1;
 	cin>>n;
 
 	if(n==0 or n==1){
@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
 		exit(0);
 	}
 	else{
-		long long int fact=1;
+		unsigned long long int fact=1;
 		while(n>1) {
 		    fact= fact*n;
 		    n--;
