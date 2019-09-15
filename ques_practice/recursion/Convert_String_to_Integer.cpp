@@ -1,15 +1,20 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-int str_to_int(string str, int idx){
+int str_to_int(string str){
 
-	if (str.length()-1 == idx)
-	{
-		return (str[idx] - '0');
+	if (str.length() == 0) {
+		return 0;
 	}
 
-	int num_n1 = str_to_int(str, idx+1);
-	int number = (str[idx] - '0')*10 + num_n1;
+	char ch = str[0];
+	int length = str.length();
+	string ros = str.substr(1);
+
+	int result = str_to_int(ros);
+
+	int number = pow((ch-'0'),length) + result;
+
 	return number;
 }
 
@@ -17,7 +22,6 @@ int main(int argc, char const *argv[])
 {
 	string str;
 	cin>>str;
-	cout<<str.length()<<endl;
-	cout<<str_to_int(str, 0);
+	cout<<str_to_int(str);
 	return 0;
 }
