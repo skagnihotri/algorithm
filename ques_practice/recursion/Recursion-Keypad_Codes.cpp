@@ -1,25 +1,25 @@
 #include <iostream>
 using namespace std;
 
-string keypad[] = { "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wx", "yz"} 
+string keypad[] = { "","abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wx", "yz"};
 
 int rec_keypad(string str, string ans){
 
-	if (str.length() == 0) {
+	if (str.length() == 0){
 		cout<<ans<<" ";
-		return ++count;
+		return 1;
 	}
+
 	int count = 0;
 	char ch = str[0];
 	string ros = str.substr(1);
 	string key = keypad[ch-'0'];
 
 	for (int i = 0; i < key.length(); ++i) {
-		count += rec_keypad(ros, ans + key[0]);	
+		count += rec_keypad(ros, ans+key[i]);	
 	}
 	return count;
 }
-
 
 int main(int argc, char const *argv[])
 {

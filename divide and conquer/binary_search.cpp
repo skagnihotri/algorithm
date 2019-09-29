@@ -25,7 +25,7 @@ int binary_search_last(int arr[], int n, int data){
 
 	int mid;
 	int start = 0;
-	int flag = 0;
+	int flag = -1;
 	while(start<n) {
 	    mid = (n+start)/2;
 	    if (arr[mid] == data) {
@@ -41,12 +41,12 @@ int binary_search_last(int arr[], int n, int data){
 
 	}
 
-	if (flag){
-		return flag;
-	}else{
-		return -1;
-	}
-
+	// if (flag!= -1){
+	// 	return flag;
+	// }else{
+	// 	return -1;
+	// }
+	return flag;
 }
 
 int main(int argc, char const *argv[])
