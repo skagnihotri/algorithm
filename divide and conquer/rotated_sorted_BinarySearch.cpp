@@ -31,7 +31,7 @@ int main(int argc, char const *argv[])
 {
 	int arr[] = {5,6,7,1,2,3,4};
 	cout<<"ANS:-"<<endl;
-	cout<<rotated_BinarySearch(arr,0,7,2)<<endl;
-	cout<<rotated_BinarySearch(arr,0,7,9);
+	cout<<rotated_BinarySearch(arr,0,6,2)<<endl;
+	cout<<rotated_BinarySearch(arr,0,6,9);
 	return 0;
 }
