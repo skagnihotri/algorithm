@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool isVallid(int arr[],int n,int painters,int ans){
+bool isVallid(long int arr[],long int n,long int painters,long int ans){
 
-	int painter =1;
-	int time = 0;
-	for (int i = 0; i < n; ++i){
+	long int painter =1;
+	long int time = 0;
+	for (long int i = 0; i < n; ++i){
 		time += arr[i];
 		if (time>ans){
 			painter++;
@@ -15,19 +15,16 @@ bool isVallid(int arr[],int n,int painters,int ans){
 			time = arr[i];
 		}
 	}
-	if (painters==painter){
-		return true;
-	}
-	return false;
+	return true;
 }
 
-int painter_prob(int arr[], int n, int painters){
-	int start=0,end=0,mid;
-	for (int i = 0; i < n; ++i){
+long int painter_prob(long int arr[],long int n,long int painters){
+	long int start=0,end=0,mid;
+	for (long int i = 0; i < n; ++i){
 		start = max(start,arr[i]);
 		end += arr[i];
 	}
-	int ans=start;
+	long int ans=start;
 	while(start<=end) {
 	    mid = start + (end-start)/2;
 	    if (isVallid(arr,n,painters,mid)){
@@ -42,11 +39,11 @@ int painter_prob(int arr[], int n, int painters){
 
 int main(int argc, char const *argv[])
 {
-	int boards,painters,time;
-	cin>>boards,painters,time;
-	int arr[boards];
-	for (int i = 0; i < boards; ++i){
-		int j;
+	long int boards,painters,time;
+	cin>>boards>>painters>>time;
+	long int arr[boards];
+	for (long int i = 0; i < boards; ++i){
+		long int j;
 		cin>>j;
 		arr[i] = j*time;
 	}
