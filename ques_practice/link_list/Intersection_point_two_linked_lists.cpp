@@ -36,9 +36,14 @@ void display(node* a, node* b, int k){
 	    a = a->next;
 	}
 
-	while(a->data != b->data) {
+	while(b!=NULL and a->data != b->data) {
 	    a = a->next;
 	    b = b->next;
+	}
+
+	if (b == NULL){
+		cout<<"-1";
+		return;
 	}
 	cout<<a->data;
 }
