@@ -29,25 +29,31 @@ void insert(node* &head, int data){
 	return;
 }
 
-void display(node* head, int data){
+void display(node* head, node* temp){
 
-	while(data--) {
-	    cout<<head->data;
+	while(head!=temp) {
+	    cout<<head->data<<" ";
 	    head = head->next;
 	}
-	return;
+	return;	
 }
 
 void detect(node* a){
 
-	int count = 0;
-	node* b=a->next->next;
-	while(a->data != b->data) {
-	    a = a->next;
-	    b=b->next->next;
-	    count++;
+	node* head=a;
+	node* temp=NULL;
+	int flag = 0;
+	while(head->next!=NULL) {
+	    temp = head->next;
+	    while(temp!=NULL) {
+	        if (temp->data == head->data){
+	        	display(a,temp);
+	        	return;
+	        }
+	        temp = temp->next;
+	    }
+		head = head->next;
 	}
-	display(a,count);
 }
 
 int main(int argc, char const *argv[]){
@@ -60,6 +66,7 @@ int main(int argc, char const *argv[]){
 	    insert(head, data);
 	    cin>>data;
 	}
+	
 	detect(head);
 
 	return 0;

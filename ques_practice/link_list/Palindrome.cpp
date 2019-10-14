@@ -29,24 +29,31 @@ void insert(node* &head, int data){
 	return;
 }
 
-// void display(node* a, node* b, int k){
+bool palin(node* head, node* last)
+{	
+	if (head==last){
+		return true;
+	}
+	if (head->next == last){
+		if (head->data == head->next->data){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
-// 	int count = k;
-// 	while(k--) {
-// 	    a = a->next;
-// 	}
-
-// 	while(b!=NULL and a->data != b->data) {
-// 	    a = a->next;
-// 	    b = b->next;
-// 	}
-
-// 	if (b == NULL){
-// 		cout<<"-1";
-// 		return;
-// 	}
-// 	cout<<a->data;
-// }
+	node* temp = head;
+	while(temp->next != last) {
+	    temp = temp->next;
+	}
+    // cout<<head->data<<" "<<last->data<<endl;
+	if (head->data == last->data)
+	{
+		return palin(head->next, temp);
+	}else{
+		return false;
+	}
+}
 
 int main(int argc, char const *argv[]){
 	
@@ -58,6 +65,15 @@ int main(int argc, char const *argv[]){
 		cin>>data;
 		insert(head, data);
 	}
-	
+	node* last = head; 
+	n = n-1;
+	while(n--) {
+	    last = last->next;
+	}
+	if(palin(head, last)){
+        cout<<"True"<<endl;
+    }else{
+        cout<<"False"<<endl;
+    }
 	return 0;
 }

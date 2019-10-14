@@ -58,3 +58,7 @@ int main(int argc, char const *argv[])
 	}
 	return 0;
 }
+
+/* apply kadens and 
+multiply every element by -1 and apply kadens and add to kadens 
+and compare with normal array and find maximum sun*/
