@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 class node
@@ -38,17 +39,15 @@ void display(node* head){
 	return;	
 }
 
-node* reverseReccursive(node* &head){
-
-	if (head->next==NULL and head==NULL){
+node* reverseRecursive(node*&head){
+	if(head->next==NULL or head==NULL){
 		return head;
 	}
 
-	node* newHead = reverseReccursive(head->next);
+	node* newHead = reverseRecursive(head->next);
 	node* currentHead = head;
 	currentHead->next->next = currentHead;
-	currentHead->next = NULL;	
-
+	currentHead->next = NULL;
 	return newHead;
 }
 
@@ -58,20 +57,24 @@ node* k_reverse(node* &head, int k){
 		return head;
 	}
 
-	int i=k;
+
 	node* temp = head;
-	node* p;
-	while(i--) {
-		p = temp;
+	node* prev = NULL;
+	int i=0;
+	while(i<k and temp != NULL) {
+	    prev = temp;
 	    temp = temp->next;
+        i++;
 	}
-	p->next = null;
-	head = reverse(head);
-	p = head;
-	while(p->next != NULL) {
-	    p = p->next;
+	prev->next = NULL;
+	head = reverseRecursive(head);
+    
+    prev = head;
+    while(prev->next != NULL){
+	    prev = prev->next;
 	}
-	p->next = k_reverse(temp, k);
+
+	prev->next = k_reverse(temp, k);
 
 	return head;
 }
@@ -87,7 +90,8 @@ int main(int argc, char const *argv[]){
 		cin>>data;
 		insert(head, data);
 	}
-
+    display(head);
+    cout<<endl;
 	node* c = k_reverse(head,k);
 	display(c); 
 	return 0;

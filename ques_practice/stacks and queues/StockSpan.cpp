@@ -3,19 +3,18 @@ using namespace std;
 
 void span(int arr[], int n){
 
-	int span_arr[n] = {1};
+	int span_arr[n] = {0};
 	stack<int> s;
-	s.push(0);
-	for (int i = 1; i < n; ++i){
+	for (int i = 0; i < n; ++i){
 		
-		while(arr[s.top()] <= arr[i] and !s.empty()) {
+		while(!s.empty() and arr[s.top()] <= arr[i]) {
 		    s.pop();
 		}
 
 		if (s.empty()){
 			span_arr[i] = i+1;
 		}else{
-			span_arr[i] = i+1-s.top();
+			span_arr[i] = i-s.top();
 		}
 
 		s.push(i);
