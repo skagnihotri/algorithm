@@ -1,46 +1,59 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main(int argc, char const *argv[])
-{
-	int t;
-	cout<<"test cases ";
-	cin>>t;
+bool arr[10000000];
 
-	int arr[1000001] = {0};
-	arr[2] = 1;
+void primeSieve(){
 
-	for (int i = 3; i < 1000001; i = i+2){
-			arr[i] = 1;
+	arr[2] = true;
+	arr[0] = arr[1] = false;
+
+	for (unsigned int i = 3; i < 10000000; i+=2){
+		arr[i] = true;
 	}
+
+	for (unsigned int i = 3; i*i < 10000000; i+=2){
 		
-	for (int i = 3; i < 1000001; i = i+2){		
-		if(arr[i]){
-			for (int j = i*i; j < 1000001; j += 2*i) {
-				arr[j] = 0;
+		if (arr[i]){
+			for (unsigned int j = i*i; j < 10000000; j += i){
+				arr[j] = false;
 			}
+		}
+
+	}
+
+	return;
+}
+
+void prime(int a, int b){
+
+	int count=0;
+	for (int i = a; i <= b; ++i)
+	{
+		if(arr[i]){
+			count++;
 		}
 	}
 
-	// while(t--){
+	cout<<count<<endl;
+
+	return;
+}
+
+int main(int argc, char const *argv[])
+{
+	
+	primeSieve();
+	
+	int t;
+	cin>>t;
+	while(t--){
 		
-	// 	int a,b;
-	// 	cin>>a>>b;
+		int a,b;
+		cin>>a>>b;
+		prime(a, b);
 
-	// 	if(a<=1){
-	// 		a=2;
-	// 	}		
-
-	// 	int count=0;
-	// 	for (int i = a; i < b+1; ++i)
-	// 	{
-	// 		if(arr[i]){
-	// 			count++;
-	// 		}
-	// 	}
-
-	// 	cout<<count<<endl;
-	// }
+	}
 
 	return 0;
 }
