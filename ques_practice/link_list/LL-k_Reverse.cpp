@@ -90,8 +90,7 @@ int main(int argc, char const *argv[]){
 		cin>>data;
 		insert(head, data);
 	}
-    display(head);
-    cout<<endl;
+   
 	node* c = k_reverse(head,k);
 	display(c); 
 	return 0;
