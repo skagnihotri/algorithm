@@ -2,18 +2,14 @@
 using namespace std;
 
 int tilling(int n,int m){
-	if (n==0){
-		return 1;
-	}
-	if (n<0){
-		return 0;
+	if (n==1 or n==m){
+		return n;
 	}
 
 	int count=0;
 	count += tilling(n-1,m);
-	if (n>=m){
-		count += tilling(n-m,m);
-	}
+	count += tilling(n-m,m);
+
 	return count;
 }
 

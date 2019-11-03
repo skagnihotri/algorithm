@@ -107,6 +107,22 @@ bool searchBST(node* root, int data){
 }
 
 
+int numberofBST(int n){
+
+	if (n == 0)
+	{
+		return 1;
+	}
+
+	int left,right;
+	for (int i = 1; i < n+1; ++i)
+	{
+		left = numberofBST(i-1);
+		right = numberofBST(n-i);
+	}
+	return left*right;
+}
+
 int main(){
 
 	node* root = construct();

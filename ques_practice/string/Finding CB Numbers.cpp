@@ -26,7 +26,7 @@ bool valid(int number){
 
 bool check(bool arr[],int start,int end){
 
-	for (int i = start; i < end; ++i){
+	for (int i = start; i <= end; ++i){
 		if (arr[i]){
 			return false;
 		}
@@ -36,7 +36,7 @@ bool check(bool arr[],int start,int end){
 
 void mark(bool arr[],int start,int end){
 
-	for (int i = start; i < end; ++i){
+	for (int i = start; i <= end; ++i){
 		arr[i] = true;
 	}
 	return;
@@ -52,12 +52,12 @@ int main(int argc, char const *argv[])
 	int count=0;
 
 	for (unsigned int i = 1; i <= s.length(); ++i){
-		for (unsigned int j = 0; j < s.length(); ++j){
+		for (unsigned int j = 0; j < s.length()-i; ++j){
 			string cb = s.substr(j,i);
 			if(valid(stoi(cb))){
-				if (check(arr, j, j+i)){
+				if (check(arr, j, j+i-1)){
 					count++;
-					mark(arr, j, j+i);
+					mark(arr, j, j+i-1);
 				}
 			}
 		}
