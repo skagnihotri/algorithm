@@ -25,8 +25,8 @@ node* built(node* root, int pre[], int in[], int s, int e){
 		root = new node(pre[idx]);
 	}
 
-	int mid=-1;
-	for (int i = 0; i < e; ++i)
+	int mid = -1;
+	for (int i = 0; i <= e; ++i)
 	{
 		if (pre[idx] == in[i])
 		{
@@ -43,25 +43,29 @@ node* built(node* root, int pre[], int in[], int s, int e){
 }
 
 void display(node* root){
-	if (root->left == NULL)
-	{
-		cout<<"END => ";
-		return;
-	}
-
-	if (root->right == NULL)
-	{
-		cout<<"<= END"<<endl;
-		return;
-	}
-
+	
 	if (root == NULL)
 	{
 		return;
 	}
 
-	display(root->left);
+	// if (root->left == NULL)
+	// {
+	// 	cout<<"END => ";
+	// }else{
+	// 	cout<<root->left->data<<" => ";
+	// }
+
 	cout<<root->data<<" ";
+
+	// if (root->right == NULL)
+	// {
+	// 	cout<<"<= END"<<endl;
+	// }else{
+	// 	cout<<"<= "<<root->right->data<<endl;
+	// }
+
+	display(root->left);
 	display(root->right);
 	return;
 }
@@ -85,7 +89,7 @@ int main(int argc, char const *argv[])
 	}
 
 	node* root = NULL;
-	root = built(root, pre, in, 0, n-1);
+	root = built(root, pre, in, 0, m-1);
 	display(root);
 	return 0;
 }
