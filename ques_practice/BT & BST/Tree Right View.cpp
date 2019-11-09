@@ -44,15 +44,21 @@ node* buildTree(node* root){
 	return root;
 }
 
-void display(node* root){
+int max_level = 0;
+void displayleft(node* root, int level){
 
 	if(root == NULL){
 		return;
 	}
 
-	cout<<root->data<<" ";
-	display(root->left);
-	display(root->right);
+    if (level > max_level)
+    {
+    	cout<<root->data<<" ";
+    	max_level = level;	
+    }
+	displayleft(root->right, level+1);
+	displayleft(root->left, level+1);
+	
 	return;
 }
 
@@ -61,7 +67,7 @@ int main(int argc, char const *argv[])
 	node* root = NULL;
 	root = buildTree(root);
 	
-	display(root);
+	displayleft(root, 1);
 	
 	return 0;
 }

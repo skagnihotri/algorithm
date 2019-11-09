@@ -49,8 +49,60 @@ void display_preorder(node* root){
 	return;
 }
 
+void printarray(int arr[], int n, int size){
+
+	if (n&1)
+	{
+		for (int i = 0; i < size; ++i)
+		{
+			cout<<arr[i]<<" ";
+		}
+		return;
+	}
+
+	for (int i = size-1; i >=0 ; --i)
+	{
+		cout<<arr[i]<<" ";
+	}
+}
+
+void display(node* root){
+	queue<node*> q;
+	q.push(root);
+	q.push(NULL);
+	int arr[100000];
+	int i = 0, n = 1;
+	while(!q.empty()){
+		node* temp = q.front();
+		q.pop();
+		if (temp == NULL){
+			printarray(arr, n, i);
+			n++;
+            i = 0;
+			if (q.empty()){
+				break;
+			}
+			q.push(NULL);
+		}else{
+			arr[i] = temp->data;
+            i++;
+			if (temp->left != NULL)
+			{
+				q.push(temp->left);	
+			}
+			if (temp->right != NULL)
+			{
+				q.push(temp->right);	
+			}
+		}
+	}
+	return;
+}
+
 int main(int argc, char const *argv[])
 {
-	node* root = 
+	node* root = NULL;
+	root = builtdTree(root);
+	display(root);
 	return 0;
 }

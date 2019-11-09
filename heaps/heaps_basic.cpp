@@ -67,6 +67,13 @@ void display(vector<int> &heap){
 	cout<<endl;
 }
 
+void buildheap(vector<int> &heap, int idx){
+	for (int i = heap.size() -1; i >=0 ; --i)
+	{
+		downheapify(heap, i);
+	}
+}
+
 int main(int argc, char const *argv[])
 {
 	vector<int> arr;
