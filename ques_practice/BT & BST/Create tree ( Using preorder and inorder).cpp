@@ -49,21 +49,21 @@ void display(node* root){
 		return;
 	}
 
-	// if (root->left == NULL)
-	// {
-	// 	cout<<"END => ";
-	// }else{
-	// 	cout<<root->left->data<<" => ";
-	// }
+	if (root->left == NULL)
+	{
+		cout<<"END => ";
+	}else{
+		cout<<root->left->data<<" => ";
+	}
 
 	cout<<root->data<<" ";
 
-	// if (root->right == NULL)
-	// {
-	// 	cout<<"<= END"<<endl;
-	// }else{
-	// 	cout<<"<= "<<root->right->data<<endl;
-	// }
+	if (root->right == NULL)
+	{
+		cout<<"<= END"<<endl;
+	}else{
+		cout<<"<= "<<root->right->data<<endl;
+	}
 
 	display(root->left);
 	display(root->right);

@@ -4,7 +4,7 @@ using namespace std;
 int SanketString(string s, int k){
 
 	int ans = 0;
-	int check[] = {0};
+	int check[2] = {0};
 	int left = 0;
 	int count=0;
 	for (int i = 0; i < s.length(); ++i)
@@ -14,7 +14,7 @@ int SanketString(string s, int k){
 
 		if (min(check[0],check[1]) > k)
 		{
-			check[s[left] - 'a'];
+			check[s[left] - 'a']--;
 			left++;
 		}else{
 			count = i-left+1;
