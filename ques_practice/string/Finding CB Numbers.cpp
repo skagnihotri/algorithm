@@ -52,7 +52,7 @@ int main(int argc, char const *argv[])
 	int count=0;
 
 	for (unsigned int i = 1; i <= s.length(); ++i){
-		for (unsigned int j = 0; j < s.length()-i; ++j){
+		for (unsigned int j = 0; j <= s.length()-i; ++j){
 			string cb = s.substr(j,i);
 			if(valid(stoi(cb))){
 				if (check(arr, j, j+i-1)){
