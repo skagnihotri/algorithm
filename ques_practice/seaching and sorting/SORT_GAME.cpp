@@ -1,40 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+class SORT_GAME
+{
+public:
+	int data;
+	string str;	
+};
+
+bool my_compare(SORT_GAME a, SORT_GAME b){
+
+	if(a.data == b.data){
+		return a.str<b.str;
+	}
+
+	return a.data>b.data;
+}
+
 int main(int argc, char const *argv[])
 {
 	int x,n;
 	cin>>x>>n;
-	int a[n];
-	string str[n];
+	SORT_GAME list[n];
 
 	for (int i = 0; i < n; ++i)
 	{
-		cin>>str[i]>>a[i];	
+		cin>>list[i].str>>list[i].data;	
 	}
 
-	for (int i = 0; i < n; ++i)
-	{	int count1=0,count2=0;
-		for (int j = 0; j < n-i-1; ++j)
-		{
-			if(a[j] < a[j+1]){
-				swap(a[j], a[j+1]);
-				str[j].swap(str[j+1]);
-                count1++;
-			}
-			if(a[j]==a[j+1] and str[j] > str[j+1]){
-				str[j+1].swap(str[j]);
-                count2++;
-			}
+	sort(list, list+n, my_compare);
+
+	for (int i = 0; i < n; ++i){
+
+		if (list[i].data >= x){
+			cout<<list[i].str<<" "<<list[i].data<<endl;
 		}
-        if(count1==0 and count2==0){
-            break;
-        }
-	}
-
-	for (int i = 0; a[i] >= x; ++i)
-	{
-		cout<<str[i]<<" "<<a[i]<<endl;	
 	}	
 
 	return 0;
