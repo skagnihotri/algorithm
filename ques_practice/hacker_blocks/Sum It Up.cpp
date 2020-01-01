@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<string> v;
+string answer[];
 void sum_it_up(int arr[], int n, int target, int idx, int sum, string ans){
-
+	
 	
 }
 

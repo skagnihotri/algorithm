@@ -1,7 +1,7 @@
-// #include <iostream>
-// #include <unordered_map>
-// #include <list>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <unordered_map>
+#include <list>
+#include <queue>
 
 using namespace std;
 
@@ -32,40 +32,124 @@ public:
 		}
 	}
 
-	void display_levelOrder(T u){
+	void bfs(T src){
 		queue<T> q;
-		q.push(u);
-		unordered_map<T,int> visited;
-		visited[q.front()];
+		unordered_map<T,bool> visited;
+
+		q.push(src);
+		visited[src] = true;
+
 		while(!q.empty()){
-			cout<<q.front()<<" ";
-			for(auto var:AdjList[q.front()]){
-				if (visited.find(var) == visited.end())
-				{
-					q.push(var);
-					visited[var];	
+
+			T node = q.front();
+			q.pop();
+
+			cout<<node<<" ";
+
+			for(T neighbor:AdjList[node]){
+				if(!visited[neighbor]){
+					q.push(neighbor);
+					visited[neighbor] = true;
 				}
 			}
-			q.pop();
+
 		}
+
+		cout<<endl;
 	}
 
-	// void display_DFSOrder(T u, unordered_map<T, int> &visited){
+	void dfs_Helper(T node,unordered_map<T,bool> &visited){
+
+		cout<<node<<" ";
+		visited[node] = true;
+
+		for(T neighbor:AdjList[node]){
+			if(!visited[neighbor]){
+				dfs_Helper(neighbor,visited);
+			}
+		}
+
+	}
+
+	void dfs(T src){
+
+		unordered_map<T,bool> visited;
+		// visited[src] = true;
+
+		int component = 0;
+
+		for(auto node:AdjList){
+			if(!visited[node.first]){
+				dfs_Helper(node.first,visited);
+				cout<<endl;
+				component++;
+			}
+		}
+		
+		cout<<"Number of component "<<component<<endl;
+	}
+
+	void dfsTopologicalSortHelper(T node,unordered_map<T,bool> &visited,list<T> &order){
+
+		visited[node] = true;
+
+		for(T neighbor:AdjList[node]){
+			if(!visited[neighbor]){
+				dfsTopologicalSortHelper(neighbor,visited,order);
+			}
+		}
+
+		order.push_front(node);
+	}
+
+	void dfsTopologicalSort(T src){
+		unordered_map<T,bool> visited;
+		list<T> order;
+
+		dfsTopologicalSortHelper(src,visited,order);
+
+		for(auto node:AdjList){
+			if(!visited[node.first]){
+				dfsTopologicalSortHelper(node.first,visited,order);
+			}
+		}
+
+		for(T node:order){
+			cout<<node<<" ";
+		}
+		cout<<endl;
+	}
+
+	// int No_of_pair_Not_connected(){
+	// 	unordered_map<T, bool> visited;
+	// 	int countALL = 0;
+	// 	vector<int> seperate;
+	// 	for(auto node: AdjList){
+			
+	// 	}
 
 	// }
+
 };
 
 int main(){
 
-	Graph<int> g;
+	// Graph<int> g;
 
-	g.addEdge(1,2);
-	g.addEdge(2,3);
-	g.addEdge(1,4);
-	g.addEdge(3,4);
-	g.addEdge(4,6);
+	// g.addEdge(1,2);
+	// g.addEdge(1,3);
+	// g.addEdge(3,2);
+	// // g.addEdge(3,2);
+
+	// g.addEdge(4,5);
+	// g.addEdge(6,5);
+	// g.addEdge(7,5);
+
 
 	// g.display();
+
+	// // g.bfs(1);
+	// g.dfs(1);
 
 	// Graph<string> g;
 
@@ -74,9 +158,17 @@ int main(){
 	// g.addEdge("Java","Python");
 	// g.addEdge("Python","Coding Blocks");
 
-	g.display();
-	cout<<endl;
-	g.display_levelOrder(1);
+	// g.display();
 
+	Graph<string> g;
+
+	g.addEdge("Maths","Programming",false);
+	g.addEdge("English","Programming",false);
+	g.addEdge("Programming","Python",false);
+	g.addEdge("Programming","Java",false);
+	g.addEdge("Java","Web",false);
+	g.addEdge("Python","Web",false);
+
+	g.dfsTopologicalSort("Maths");
 	return 0;
 }
