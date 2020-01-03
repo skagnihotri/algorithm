@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool valid(int number){
+bool valid(long long number){
 
 	int cb_number[] = {2,3,5,7,11,13,17,19,23,29};
 	int size = 10;
@@ -54,7 +54,7 @@ int main(int argc, char const *argv[])
 	for (int i = 1; i <= s.length(); ++i){
 		for (int j = 0; j <= s.length()-i; ++j){
 			string cb = s.substr(j,i);
-			if(valid(stoi(cb))){
+			if(valid(stoll(cb))){
 				if (check(arr, j, j+i-1)){
 					count++;
 					mark(arr, j, j+i-1);
@@ -62,6 +62,7 @@ int main(int argc, char const *argv[])
 			}
 		}
 	}
+
 	cout<<count<<endl;
 	return 0;
 }

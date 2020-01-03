@@ -8,22 +8,22 @@ int main()
 
 	while(t--){
 
-		int n;
+		long long n;
 		cin>>n;
-		int cost[n],distance[n];
+		long long cost[n],distance[n];
 
-		for (int i = 0; i < n; ++i){
+		for (long long i = 0; i < n; ++i){
 			cin>>cost[i];
 		}
 
-		for (int i = 0; i < n; ++i){
+		for (long long i = 0; i < n; ++i){
 			cin>>distance[i];
 		}
 
-		int total_cost = 0, last_cost = cost[0];
+		long long total_cost = 0, last_cost = cost[0];
 		total_cost = distance[0]*last_cost;
 
-		for (int i = 1; i < n; ++i){
+		for (long long i = 1; i < n; ++i){
 			
 			if (cost[i] < last_cost){
 				last_cost = cost[i];
