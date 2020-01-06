@@ -1,36 +1,50 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// void form_number(long long number[], long long n){
+long long ugly(long long n){
 
+	long long dp[n] = {1};
 
-// 	long long arr[n] = {0,1};
-// 	for (long long i = 2; i < n; ++i){
-// 		if (i%2==0 or i%3==0 or i%5==0){
-// 			arr[i] = 1;
-// 		}
-// 	}
+	long long i2=0,i3=0,i5=0;
 
-// 	long long j=1;
-// 	for (long long i = 0; i < n; ++i){
-// 		if (arr[i]){
-// 			number[j++] = i;
-// 		}
-// 	}
-// 	return;
-// }
+	long long next_ugly_2 = dp[i2]*2;
+	long long next_ugly_3 = dp[i3]*3;
+	long long next_ugly_5 = dp[i5]*5;
 
-int main(int argc, char const *argv[])
+	for (int i = 1; i < n; ++i){
+		
+		long long next_ugly_no = min(next_ugly_2, min(next_ugly_3, next_ugly_5));
+
+		dp[i] = next_ugly_no;
+
+		if (next_ugly_no == next_ugly_2){
+			i2++;
+			next_ugly_2 = dp[i2]*2;
+		}
+
+		if (next_ugly_no == next_ugly_3){
+			i3++;
+			next_ugly_3 = dp[i3]*3;
+		}
+
+		if (next_ugly_no == next_ugly_5){
+			i5++;
+			next_ugly_5 = dp[i5]*5;
+		}
+	}
+
+	return dp[n-1];
+}
+
+int main()
 {
 	int t;
 	cin>>t;
-
-	long long number[100001] = {0};
-	form_number(number,100001);
+	
 	while(t--){
 		long long n;
 		cin>>n;
-		cout<<number[n]<<endl;
+		cout<<ugly(n)<<endl;
 	}
 	
 	return 0;

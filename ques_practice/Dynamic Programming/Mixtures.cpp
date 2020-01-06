@@ -1,16 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// int memo[101] = {0};
-int mixture(int arr[], int n, int idx){
+int sum(int arr[], int s, int e){
+	int sum = 0;
 
-	if (idx==n){
+	for (int i = s; i <= e; ++i){
+		sum += arr[i];
+		sum %= 100;
+	}
+
+	return sum;
+}
+
+int memo[101][101];
+
+int mixture(int arr[], int s, int e){
+
+	if (s>=e){
 		return 0;
 	}
 
-	int ans = 0;
+	if (memo[s][e]!=-1){
+		return memo[s][e];
+	}
 
-	int q1 = mixture()
+	int ans = INT_MAX;
+
+	for (int i = s; i < e; ++i){
+		ans = min(ans, mixture(arr,s,i) + mixture(arr, i+1, e) + sum(arr,s,i)*sum(arr,i+1,e));
+	}
+	memo[s][e] = ans;
+	return ans;
 }
 
 int main(int argc, char const *argv[])
@@ -22,6 +42,12 @@ int main(int argc, char const *argv[])
 		cin>>arr[i];
 	}
 
-	cout<<mixture(arr,n,0)<<endl;
+	for (int i = 0; i <= n; ++i){
+		for (int j = 0; j <= n; ++j){
+			memo[i][j] = -1;
+		}
+	}
+
+	cout<<mixture(arr,0,n-1)<<endl;
 	return 0;
 }

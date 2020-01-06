@@ -18,7 +18,7 @@ int main()
 
 	int current_num = n;
 
-	while(k--){
+	while(k and current_num>0){
 
 		int best_pos = n - current_num;
 		if (best_pos != mp[current_num]){
